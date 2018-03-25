@@ -1,0 +1,18 @@
+{
+  "autoPin": true,
+  "pins": [
+    {
+      "package": "HT16K33",
+      "reason": null,
+      "repositoryURL": "/home/jason/HT16K33",
+      "version": "1.0.0"
+    },
+    {
+      "package": "SwiftyGPIO",
+      "reason": null,
+      "repositoryURL": "https://github.com/uraimo/SwiftyGPIO.git",
+      "version": "0.9.13"
+    }
+  ],
+  "version": 1
+}
