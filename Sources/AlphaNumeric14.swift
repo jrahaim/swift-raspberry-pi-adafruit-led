@@ -1,4 +1,4 @@
-public class Alphanumeric14 : HT16K33 {
+public class AlphaNumeric14 : HT16K33 {
     static let font : [Character: UInt16] = [
         " " : 0b0000000000000000,
         "!" : 0b0000000000000110,
@@ -7,7 +7,7 @@ public class Alphanumeric14 : HT16K33 {
         "$" : 0b0001001011101101,
         "%" : 0b0000110000100100,
         "&" : 0b0010001101011101,
-        "\"" : 0b0000010000000000,
+        "'" : 0b0000010000000000,
         "(" : 0b0010010000000000,
         ")" : 0b0000100100000000,
         "*" : 0b0011111111000000,
@@ -97,9 +97,11 @@ public class Alphanumeric14 : HT16K33 {
         "~" : 0b0000010100100000
     ]
     
-    public func set(string: String, write: Bool) {
+    static let allSegments : UInt16 = 0b0011111111111111
+    
+    public func show(_ string: String, write: Bool = true) {
         for (index, char) in string.characters.enumerated() {
-            set(pos: index, character: char, write: false)
+            show(char, pos: index, write: false)
         }
         
         if write {
@@ -107,14 +109,21 @@ public class Alphanumeric14 : HT16K33 {
         }
     }
     
-    public func set(pos: Int, character: Character, write: Bool) {
-        guard let bitmask = Alphanumeric14.font[character], pos < 4 else {
+    public func show(_ character: Character, pos: Int, write: Bool = true) {
+        guard let bitmask = AlphaNumeric14.font[character], pos < 4 else {
+            print("Character not found")
             return
         }
         self.setRawBitmask(pos: pos, bitmask: bitmask, write: write)
     }
     
-    func setRawBitmask(pos: Int, bitmask: UInt16, write: Bool) {
+    func lightAllSegments() {
+        for i in 0..<4 {
+            setRawBitmask(pos: i, bitmask: AlphaNumeric14.allSegments)
+        }
+    }
+    
+    func setRawBitmask(pos: Int, bitmask: UInt16, write: Bool = true) {
         guard pos < 4 else {
             return
         }

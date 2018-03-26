@@ -2,6 +2,11 @@ import XCTest
 @testable import HT16K33
 
 class Matrix8x8Tests: XCTestCase {
+    
+    static var allTests = [
+        ("testMatrix8x8", testMatrix8x8),
+        ]
+    
     func testMatrix8x8() {
         let m8x8 = Matrix8x8()
         m8x8.write()
@@ -40,8 +45,4 @@ class Matrix8x8Tests: XCTestCase {
         }
         m8x8.clear()
     }
-    
-    static var allTests = [
-        ("testMatrix8x8", testMatrix8x8),
-    ]
 }

@@ -13,6 +13,8 @@ class HT16K33Tests: XCTestCase {
         
         led.set(led: 1, on: false)
         XCTAssertEqual(led.debugDescription(0), "00 00000001", "Buffer incorrect after unset")
+        
+        led.clear()
     }
 
 
