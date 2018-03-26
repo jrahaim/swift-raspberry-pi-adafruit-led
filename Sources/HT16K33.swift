@@ -10,12 +10,18 @@ public enum BlinkFrequency : UInt8 {
 
 public class HT16K33 {
     var port = 0x70
-    lazy var i2cs = {
-        return SwiftyGPIO.hardwareI2Cs(for:.RaspberryPi3)!
+    var board : SupportedBoard = .RaspberryPi3
+    
+    lazy var i2cs : [I2CInterface]? = {
+        return SwiftyGPIO.hardwareI2Cs(for: self.board)
     }()
     
-    lazy var i2c : I2CInterface = {
-        return self.i2cs[1]
+    lazy var i2c : I2CInterface? = {
+        guard let interfaces = self.i2cs else {
+            return nil
+        }
+        
+        return interfaces[1]
     }()
     
     var buffer = Array(repeating: UInt8(0b0000000), count: 16)
@@ -27,7 +33,9 @@ public class HT16K33 {
     let blinkDisplayOn : UInt8 = 0x01
 
     
-    public required init() {
+    public required init(port: Int = 0x70, board: SupportedBoard = .RaspberryPi3) {
+        self.board = board
+        self.port = port
         self.writeByte(port, value: (systemSetup | Oscillator))
         self.blink(.blinkDisplayOff)
         self.brightness(15)
@@ -46,11 +54,11 @@ public class HT16K33 {
         self.write()
     }
 
-    public func set(led: Int, on: Bool, write: Bool = true) -> Bool {
+    public func set(led: Int, on: Bool, write: Bool = true) {
         // Sets specified LED (value of 0 to 127) to the specified value, 0/False for off and 1 (or any True/non-zero value) for on.
         guard led >= 0, led <= 127 else {
             print("Led must be between 0-127.\n")
-            return false
+            return
         }
         let pos = led / 8
         let offset = led % 8
@@ -64,16 +72,22 @@ public class HT16K33 {
         if (write) {
             self.write()
         }
-        return true
     }
     
     private func writeByte(_ port: Int, value: UInt8) {
         //print("WriteByte \(port): \(value)")
+        guard let i2c = self.i2c else {
+            return
+        }
         
         i2c.writeByte(port, value: value)
     }
     
     func write() {
+        guard let i2c = self.i2c else {
+            return
+        }
+        
         for i in 0..<buffer.count {
             i2c.writeByte(port, command: UInt8(i), value: UInt8(buffer[i]))
         }
