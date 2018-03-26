@@ -36,6 +36,11 @@ matrix.setPixel(x: x, y: x, on: true)
 - Brightness
 - clearing
 
+## Next
+14 segment alphanumeric display
+
+I am open to requests, but it will require my having access to the hardware to test with.
+
 ## Disclaimer
 
 I have no relationship with Adafruit other than being a customer.
