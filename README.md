@@ -11,7 +11,9 @@ Swift implementation for accessing adafruit LEDs on a raspberry pi
 
 Building on the work of https://github.com/uraimo/SwiftyGPIO and https://github.com/adafruit/Adafruit_Python_LED_Backpack/ 
 
-To add swift support to the Adafruit Matrix 8x8 i2c LED https://learn.adafruit.com/adafruit-led-backpack/ (more coming).
+To add swift support for HT16K33 driven LEDs (like these from Adafruit):
+- Adafruit Matrix 8x8 i2c LED https://learn.adafruit.com/adafruit-led-backpack/
+- 4 Character 14 segment alpha numeric disoplay https://www.adafruit.com/product/1911
 
 ## requirements
 
