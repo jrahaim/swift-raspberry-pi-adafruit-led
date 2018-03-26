@@ -83,7 +83,7 @@ public class HT16K33 {
         i2c.writeByte(port, value: value)
     }
     
-    func write() {
+    public func write() {
         guard let i2c = self.i2c else {
             return
         }
