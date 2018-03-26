@@ -4,5 +4,6 @@ import XCTest
 
 XCTMain([
     testCase(HT16K33Tests.allTests),
-    testCase(Matrix8x8Tests.allTests),
+//    testCase(Matrix8x8Tests.allTests),
+//    testCase(AlphaNumeric14Tests.allTests),
 ])
