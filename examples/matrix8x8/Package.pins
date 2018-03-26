@@ -4,8 +4,8 @@
     {
       "package": "HT16K33",
       "reason": null,
-      "repositoryURL": "/home/jason/HT16K33",
-      "version": "1.0.0"
+      "repositoryURL": "https://github.com/jrahaim/swift-raspberry-pi-adafruit-led.git",
+      "version": "1.0.2"
     },
     {
       "package": "SwiftyGPIO",
