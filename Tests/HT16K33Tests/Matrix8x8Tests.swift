@@ -38,9 +38,7 @@ class Matrix8x8Tests: XCTestCase {
                 m8x8.setPixel(x: x, y: y, on: false, write: true)
             }
         }
-		sleep(1)
         m8x8.clear()
-        print(m8x8.debugDescription())
     }
     
     static var allTests = [
