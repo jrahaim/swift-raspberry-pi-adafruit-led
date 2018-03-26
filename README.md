@@ -1,7 +1,7 @@
 # swift-raspberry-pi-adafruit-led
 Swift implementation for accessing adafruit LEDs on a raspberry pi
 
-Building on the work of https://github.com/uraimo/SwiftyGPIO and https://github.com/adafruit/Adafruit_LED_Backpack 
+Building on the work of https://github.com/uraimo/SwiftyGPIO and https://github.com/adafruit/Adafruit_Python_LED_Backpack/ 
 
 To add swift support to the Adafruit Matrix 8x8 i2c LED https://learn.adafruit.com/adafruit-led-backpack/ (more coming).
 
@@ -35,3 +35,7 @@ matrix.setPixel(x: x, y: x, on: true)
 - Blinking
 - Brightness
 - clearing
+
+## Disclaimer
+
+I have no relationship with Adafruit other than being a customer.
